@@ -49,16 +49,16 @@
         </nav>
 
         <!-- Actions -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 lg:gap-2">
           <!-- Messages -->
           <button
-              class="relative p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
+              class="relative w-10 h-10 flex items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
               aria-label="پیام‌ها"
           >
-            <UIcon name="i-heroicons-chat-bubble-left-right" class="w-6 h-6" />
+            <UIcon name="i-heroicons-chat-bubble-left-right" class="w-5 h-5" />
             <span
                 v-if="unreadMessages > 0"
-                class="absolute -top-1 -left-1 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center"
+                class="absolute top-1 left-1 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center leading-none"
             >
               {{ unreadMessages }}
             </span>
@@ -66,55 +66,139 @@
 
           <!-- Search -->
           <button
-              class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
+              class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
               aria-label="جستجو"
           >
-            <UIcon name="i-heroicons-magnifying-glass" class="w-6 h-6" />
+            <UIcon name="i-heroicons-magnifying-glass" class="w-5 h-5" />
           </button>
 
           <!-- Cart -->
-          <NuxtLink
-              to="/cart"
-              class="relative p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
+          <button
+              class="relative w-10 h-10 flex items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
               aria-label="سبد خرید"
+              @click="toggleCartDropdown"
           >
-            <UIcon name="i-heroicons-shopping-cart" class="w-6 h-6" />
+            <UIcon name="i-heroicons-shopping-cart" class="w-5 h-5" />
             <span
                 v-if="cartItemsCount > 0"
-                class="absolute -top-1 -left-1 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center"
+                class="absolute top-1 left-1 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center leading-none"
             >
               {{ cartItemsCount }}
             </span>
-          </NuxtLink>
+          </button>
 
           <!-- Dark Mode Toggle -->
           <button
-              class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
+              class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
               aria-label="تغییر تم"
               @click="toggleDarkMode"
           >
-            <UIcon :name="colorMode.value === 'dark' ? 'i-heroicons-sun' : 'i-heroicons-moon'" class="w-6 h-6" />
+            <UIcon :name="colorMode.value === 'dark' ? 'i-heroicons-sun' : 'i-heroicons-moon'" class="w-5 h-5" />
           </button>
 
           <!-- User Profile -->
           <button
-              class="hidden sm:flex p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
+              class="hidden sm:flex w-10 h-10 items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
               aria-label="پروفایل کاربر"
           >
-            <UIcon name="i-heroicons-user" class="w-6 h-6" />
+            <UIcon name="i-heroicons-user" class="w-5 h-5" />
           </button>
 
           <!-- Mobile Menu Toggle -->
           <button
-              class="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
+              class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950 transition-all"
               aria-label="منو"
               @click="toggleMobileMenu"
           >
-            <UIcon name="i-heroicons-bars-3" class="w-6 h-6" />
+            <UIcon name="i-heroicons-bars-3" class="w-5 h-5" />
           </button>
         </div>
       </div>
     </div>
+
+    <!-- Cart Dropdown -->
+    <Transition
+        enter-active-class="transition-all duration-200 ease-out"
+        enter-from-class="opacity-0 translate-y-2"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition-all duration-150 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 translate-y-2"
+    >
+      <div
+          v-if="cartDropdownOpen"
+          class="absolute left-4 top-full mt-2 w-96 max-w-[calc(100vw-2rem)] bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-800 z-50"
+          @click.stop
+      >
+        <!-- Dropdown Header -->
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+          <div class="flex items-center gap-2">
+            <UIcon name="i-heroicons-shopping-cart" class="w-5 h-5 text-teal-500" />
+            <h3 class="text-base font-bold text-gray-900 dark:text-white">سبد خرید</h3>
+            <span class="text-sm text-gray-500 dark:text-gray-400">({{ cartItemsCount }} مورد)</span>
+          </div>
+          <button
+              class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+              @click="closeCartDropdown"
+          >
+            <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
+          </button>
+        </div>
+
+        <!-- Cart Items -->
+        <div v-if="cartStore.hasItems" class="max-h-96 overflow-y-auto">
+          <div
+              v-for="item in cartStore.items"
+              :key="item.id"
+              class="flex gap-4 p-4 border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+          >
+            <div class="w-16 h-16 flex-shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
+              <img v-if="item.image" :src="item.image" :alt="item.name" class="w-full h-full object-cover" />
+              <div v-else class="w-full h-full flex items-center justify-center">
+                <UIcon name="i-heroicons-photo" class="w-8 h-8 text-gray-400" />
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="text-sm font-semibold text-gray-900 dark:text-white truncate">{{ item.name }}</h4>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">تعداد: {{ item.quantity }}</p>
+              <p class="text-sm font-bold text-teal-600 dark:text-teal-400 mt-1">
+                {{ formatPrice(item.price * item.quantity) }} تومان
+              </p>
+            </div>
+            <button
+                class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950 transition-all"
+                @click="removeFromCart(item.id)"
+            >
+              <UIcon name="i-heroicons-trash" class="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div v-else class="p-8 text-center">
+          <UIcon name="i-heroicons-shopping-cart" class="w-16 h-16 text-gray-300 dark:text-gray-700 mx-auto mb-3" />
+          <p class="text-gray-500 dark:text-gray-400 text-sm">سبد خرید شما خالی است</p>
+        </div>
+
+        <!-- Dropdown Footer -->
+        <div v-if="cartStore.hasItems" class="p-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-800">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">جمع کل:</span>
+            <span class="text-lg font-bold text-teal-600 dark:text-teal-400">
+              {{ formatPrice(cartStore.subtotal) }} تومان
+            </span>
+          </div>
+          <NuxtLink
+              to="/cart"
+              class="w-full h-11 flex items-center justify-center rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-semibold transition-all"
+              @click="closeCartDropdown"
+          >
+            مشاهده سبد خرید
+            <UIcon name="i-heroicons-arrow-left" class="w-4 h-4 mr-2" />
+          </NuxtLink>
+        </div>
+      </div>
+    </Transition>
 
     <!-- Mobile Menu -->
     <Transition
@@ -213,6 +297,7 @@ const colorMode = useColorMode()
 const cartStore = useCartStore()
 
 const mobileMenuOpen = ref(false)
+const cartDropdownOpen = ref(false)
 const unreadMessages = ref(1)
 
 const cartItemsCount = computed(() => cartStore.itemCount)
@@ -235,7 +320,54 @@ const closeMobileMenu = () => {
   document.body.style.overflow = ''
 }
 
-onUnmounted(() => {
-  document.body.style.overflow = ''
+const toggleCartDropdown = () => {
+  cartDropdownOpen.value = !cartDropdownOpen.value
+}
+
+const closeCartDropdown = () => {
+  cartDropdownOpen.value = false
+}
+
+const removeFromCart = (productId: string) => {
+  cartStore.removeItem(productId)
+}
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('fa-IR').format(price)
+}
+
+// Close dropdown when clicking outside
+onMounted(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (cartDropdownOpen.value) {
+      const target = event.target as HTMLElement
+      const cartButton = document.querySelector('[aria-label="سبد خرید"]')
+      const cartDropdown = document.querySelector('.absolute.left-4.top-full')
+
+      if (cartButton && cartDropdown &&
+          !cartButton.contains(target) &&
+          !cartDropdown.contains(target)) {
+        closeCartDropdown()
+      }
+    }
+  }
+
+  document.addEventListener('click', handleClickOutside)
+
+  onUnmounted(() => {
+    document.removeEventListener('click', handleClickOutside)
+    document.body.style.overflow = ''
+  })
+})
+
+// Watch for cart changes and show dropdown
+watch(() => cartStore.items.length, (newLength, oldLength) => {
+  if (newLength > oldLength) {
+    cartDropdownOpen.value = true
+    // Auto-close after 3 seconds
+    setTimeout(() => {
+      cartDropdownOpen.value = false
+    }, 3000)
+  }
 })
 </script>
