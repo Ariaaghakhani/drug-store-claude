@@ -25,28 +25,28 @@
                 class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
                 aria-label="اینستاگرام"
             >
-              <UIcon name="i-mdi-instagram" class="w-5 h-5" />
+              <UIcon name="i-heroicons-camera" class="w-5 h-5" />
             </a>
             <a
                 href="#"
                 class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
                 aria-label="تلگرام"
             >
-              <UIcon name="i-mdi-telegram" class="w-5 h-5" />
+              <UIcon name="i-heroicons-paper-airplane" class="w-5 h-5" />
             </a>
             <a
                 href="#"
                 class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
                 aria-label="واتساپ"
             >
-              <UIcon name="i-mdi-whatsapp" class="w-5 h-5" />
+              <UIcon name="i-heroicons-chat-bubble-left-right" class="w-5 h-5" />
             </a>
             <a
                 href="#"
                 class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
                 aria-label="توییتر"
             >
-              <UIcon name="i-mdi-twitter" class="w-5 h-5" />
+              <UIcon name="i-heroicons-at-symbol" class="w-5 h-5" />
             </a>
           </div>
         </div>

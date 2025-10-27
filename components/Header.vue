@@ -215,7 +215,7 @@ const cartStore = useCartStore()
 const mobileMenuOpen = ref(false)
 const unreadMessages = ref(1)
 
-const cartItemsCount = computed(() => cartStore.totalItems)
+const cartItemsCount = computed(() => cartStore.itemCount)
 
 const toggleDarkMode = () => {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
