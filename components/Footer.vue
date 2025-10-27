@@ -1,178 +1,202 @@
 <template>
-  <footer class="bg-gray-900 text-gray-300">
-    <!-- Main Footer Content -->
-    <div class="border-b border-gray-800">
-      <UContainer>
-        <div class="py-12 lg:py-16">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Company Info -->
-            <div class="space-y-4">
-              <div class="flex items-center gap-2">
-                <div class="w-10 h-10 rounded-lg bg-brand-500 flex items-center justify-center">
-                  <UIcon name="i-heroicons-heart" class="w-6 h-6 text-white" />
-                </div>
-                <span class="text-xl font-bold text-white">
-                  داروخانه آنلاین
-                </span>
-              </div>
-              <p class="text-sm leading-relaxed text-gray-400">
-                ارائه‌دهنده معتبر دارو و محصولات بهداشتی با تحویل سریع و ایمن در سراسر کشور.
-                سلامتی شما، اولویت ماست.
-              </p>
-              <!-- Trust Badges -->
-              <div class="flex gap-3 pt-2">
-                <div class="bg-gray-800 rounded-lg px-3 py-2 text-xs">
-                  <UIcon name="i-heroicons-shield-check" class="w-4 h-4 text-green-400 inline-block mb-1" />
-                  <span class="mr-1">مجوز رسمی</span>
-                </div>
-                <div class="bg-gray-800 rounded-lg px-3 py-2 text-xs">
-                  <UIcon name="i-heroicons-lock-closed" class="w-4 h-4 text-blue-400 inline-block mb-1" />
-                  <span class="mr-1">پرداخت امن</span>
-                </div>
-              </div>
-            </div>
+  <footer class="bg-gray-900 dark:bg-gray-950 text-gray-400 py-12 lg:py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
 
-            <!-- Quick Links -->
-            <div>
-              <h3 class="text-white font-bold text-base mb-4">دسترسی سریع</h3>
-              <ul class="space-y-3">
-                <li v-for="link in quickLinks" :key="link.path">
-                  <NuxtLink
-                    :to="link.path"
-                    class="text-sm hover:text-brand-400 transition-colors inline-flex items-center gap-2"
-                  >
-                    <UIcon name="i-heroicons-chevron-left" class="w-3 h-3" />
-                    {{ link.label }}
-                  </NuxtLink>
-                </li>
-              </ul>
-            </div>
+      <!-- Footer Top -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pb-8 lg:pb-12 mb-8 lg:mb-12 border-b border-gray-800 dark:border-gray-900">
 
-            <!-- Customer Service -->
-            <div>
-              <h3 class="text-white font-bold text-base mb-4">خدمات مشتریان</h3>
-              <ul class="space-y-3">
-                <li v-for="link in serviceLinks" :key="link.path">
-                  <NuxtLink
-                    :to="link.path"
-                    class="text-sm hover:text-brand-400 transition-colors inline-flex items-center gap-2"
-                  >
-                    <UIcon name="i-heroicons-chevron-left" class="w-3 h-3" />
-                    {{ link.label }}
-                  </NuxtLink>
-                </li>
-              </ul>
+        <!-- Brand Section -->
+        <div class="sm:col-span-2 lg:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="16" fill="#14B8A6"/>
+                <circle cx="16" cy="16" r="8" fill="white"/>
+              </svg>
             </div>
-
-            <!-- Contact Info -->
-            <div>
-              <h3 class="text-white font-bold text-base mb-4">تماس با ما</h3>
-              <ul class="space-y-4">
-                <li class="flex items-start gap-3">
-                  <UIcon name="i-heroicons-phone" class="w-5 h-5 text-brand-400 mt-0.5 flex-shrink-0" />
-                  <div class="text-sm">
-                    <p class="text-white font-medium">۰۲۱-۱۲۳۴۵۶۷۸</p>
-                    <p class="text-xs text-gray-400">۲۴ ساعته، ۷ روز هفته</p>
-                  </div>
-                </li>
-                <li class="flex items-start gap-3">
-                  <UIcon name="i-heroicons-envelope" class="w-5 h-5 text-brand-400 mt-0.5 flex-shrink-0" />
-                  <div class="text-sm">
-                    <p class="text-white">info@pharmacy.ir</p>
-                  </div>
-                </li>
-                <li class="flex items-start gap-3">
-                  <UIcon name="i-heroicons-map-pin" class="w-5 h-5 text-brand-400 mt-0.5 flex-shrink-0" />
-                  <div class="text-sm">
-                    <p class="text-gray-400">تهران، خیابان ولیعصر، پلاک ۱۲۳</p>
-                  </div>
-                </li>
-              </ul>
-
-              <!-- Social Media -->
-              <div class="mt-6">
-                <p class="text-sm text-gray-400 mb-3">ما را دنبال کنید</p>
-                <div class="flex gap-2">
-                  <a
-                    href="#"
-                    class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-brand-500 flex items-center justify-center transition-colors"
-                    aria-label="اینستاگرام"
-                  >
-                    <UIcon name="i-heroicons-camera" class="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-brand-500 flex items-center justify-center transition-colors"
-                    aria-label="تلگرام"
-                  >
-                    <UIcon name="i-heroicons-paper-airplane" class="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-brand-500 flex items-center justify-center transition-colors"
-                    aria-label="توییتر"
-                  >
-                    <UIcon name="i-heroicons-at-symbol" class="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
+            <span class="text-xl font-black text-white">دارو پلاس</span>
+          </div>
+          <p class="text-sm leading-7 mb-6 text-gray-400">
+            داروخانه آنلاین قابل اعتماد شما که راه‌حل‌های سلامت و تندرستی را با فناوری پیشرفته و مراقبت شخصی‌سازی شده ارائه می‌دهد.
+          </p>
+          <div class="flex items-center gap-3">
+            <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
+                aria-label="اینستاگرام"
+            >
+              <UIcon name="i-mdi-instagram" class="w-5 h-5" />
+            </a>
+            <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
+                aria-label="تلگرام"
+            >
+              <UIcon name="i-mdi-telegram" class="w-5 h-5" />
+            </a>
+            <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
+                aria-label="واتساپ"
+            >
+              <UIcon name="i-mdi-whatsapp" class="w-5 h-5" />
+            </a>
+            <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-teal-400 hover:bg-teal-950 transition-all"
+                aria-label="توییتر"
+            >
+              <UIcon name="i-mdi-twitter" class="w-5 h-5" />
+            </a>
           </div>
         </div>
-      </UContainer>
-    </div>
 
-    <!-- Bottom Bar -->
-    <div class="bg-gray-950">
-      <UContainer>
-        <div class="py-6">
-          <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-            <p>© {{ currentYear }} داروخانه آنلاین. تمامی حقوق محفوظ است.</p>
-            <div class="flex gap-6">
-              <NuxtLink to="/privacy" class="hover:text-brand-400 transition-colors">
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-base font-bold text-white mb-4">دسترسی سریع</h3>
+          <ul class="space-y-3">
+            <li>
+              <NuxtLink
+                  to="/upload"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                بارگذاری نسخه
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/search"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                جستجوی دارو
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/products"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                محصولات سلامت
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/blog"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                وبلاگ سلامتی
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/ai-assistant"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                دستیار هوش مصنوعی
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div>
+          <h3 class="text-base font-bold text-white mb-4">پشتیبانی</h3>
+          <ul class="space-y-3">
+            <li>
+              <NuxtLink
+                  to="/help"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                مرکز راهنمایی
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/contact-pharmacist"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                تماس با داروساز
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/track-order"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                پیگیری سفارش
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/returns"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
+                بازگشت کالا
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  to="/privacy"
+                  class="text-sm text-gray-400 hover:text-teal-400 transition-colors inline-block"
+              >
                 حریم خصوصی
               </NuxtLink>
-              <NuxtLink to="/terms" class="hover:text-brand-400 transition-colors">
-                قوانین و مقررات
-              </NuxtLink>
-              <NuxtLink to="/cookies" class="hover:text-brand-400 transition-colors">
-                کوکی‌ها
-              </NuxtLink>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
-      </UContainer>
+
+        <!-- Contact Us -->
+        <div>
+          <h3 class="text-base font-bold text-white mb-4">تماس با ما</h3>
+          <ul class="space-y-4 mb-6">
+            <li class="flex items-center gap-3">
+              <UIcon name="i-heroicons-phone" class="w-5 h-5 text-teal-400 flex-shrink-0" />
+              <span class="text-sm text-gray-400">۰۲۱-۱۲۳۴۵۶۷۸</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <UIcon name="i-heroicons-envelope" class="w-5 h-5 text-teal-400 flex-shrink-0" />
+              <span class="text-sm text-gray-400">support@daroplus.ir</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <UIcon name="i-heroicons-clock" class="w-5 h-5 text-teal-400 flex-shrink-0" />
+              <span class="text-sm text-gray-400">پشتیبانی ۲۴/۷</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
+        <p class="text-sm text-gray-500">
+          © ۱۴۰۳ دارو پلاس. تمام حقوق محفوظ است. داروخانه مجاز - شماره پروانه: ۱۲۳۴۵۶۷
+        </p>
+        <div class="flex items-center gap-4">
+          <NuxtLink
+              to="/terms"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+          >
+            شرایط استفاده
+          </NuxtLink>
+          <span class="text-gray-700">•</span>
+          <NuxtLink
+              to="/privacy"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+          >
+            حریم خصوصی
+          </NuxtLink>
+          <span class="text-gray-700">•</span>
+          <NuxtLink
+              to="/accessibility"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+          >
+            دسترسی‌پذیری
+          </NuxtLink>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
 
-<script>
-export default {
-  name: 'FooterComponent',
-
-  data() {
-    return {
-      quickLinks: [
-        { label: 'داروها', path: '/medications' },
-        { label: 'محصولات بهداشتی', path: '/health-products' },
-        { label: 'مکمل‌ها', path: '/supplements' },
-        { label: 'ویتامین‌ها', path: '/vitamins' },
-        { label: 'درباره ما', path: '/about' }
-      ],
-      serviceLinks: [
-        { label: 'پرسش‌های متداول', path: '/faq' },
-        { label: 'راهنمای خرید', path: '/guide' },
-        { label: 'رویه ارسال', path: '/shipping' },
-        { label: 'رویه بازگشت', path: '/returns' },
-        { label: 'پیگیری سفارش', path: '/track-order' }
-      ]
-    }
-  },
-
-  computed: {
-    currentYear() {
-      return new Date().getFullYear()
-    }
-  }
-}
+<script setup lang="ts">
+// No logic needed for footer
 </script>
