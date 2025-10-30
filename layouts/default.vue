@@ -1,8 +1,10 @@
 <template>
   <div dir="rtl" class="font-dana">
-    <!--    <Header class="dark:text-white" />-->
-    <slot />
-    <!--    Footer-->
+    <Header />
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <Footer />
   </div>
 </template>
 
